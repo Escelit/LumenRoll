@@ -29,3 +29,6 @@ publish = false
 [lib]
 crate-type = ["cdylib"]
 
+[dependencies]
+soroban-sdk = "20.0.0"
+
