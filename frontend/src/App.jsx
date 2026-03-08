@@ -79,3 +79,7 @@ function App() {
 export default App;
 import React, { useState } from 'react';
 import WalletButton from './components/WalletButton';
+
+function App() {
+  const [address, setAddress] = useState(null);
+  const [betAmount, setBetAmount] = useState("10");
