@@ -120,3 +120,8 @@ use soroban_sdk::{
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
 #[repr(u32)]
+pub enum DiceError {
+    AlreadyInitialized = 1,
+    InvalidGuess = 2,
+    GameNotFound = 3,
+    NotHouse = 4,
