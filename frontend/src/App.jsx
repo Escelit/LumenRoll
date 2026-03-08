@@ -83,3 +83,7 @@ import WalletButton from './components/WalletButton';
 function App() {
   const [address, setAddress] = useState(null);
   const [betAmount, setBetAmount] = useState("10");
+  const [guess, setGuess] = useState(null);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-6">
