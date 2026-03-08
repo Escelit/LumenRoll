@@ -31,3 +31,7 @@ export default WalletButton;
 import React, { useState } from 'react';
 
 const WalletButton = ({ onConnect }) => {
+  const [address, setAddress] = useState(null);
+
+  const connectWallet = async () => {
+    // Integration logic for @stellar/freighter-api goes here
