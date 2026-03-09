@@ -125,3 +125,6 @@ pub enum DiceError {
     InvalidGuess = 2,
     GameNotFound = 3,
     NotHouse = 4,
+    WrongPhase = 5,
+    CommitMismatch = 6,
+    GameExpired = 7,
