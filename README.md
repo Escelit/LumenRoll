@@ -742,3 +742,7 @@ A provably fair, on-chain dice game built on Stellar using Soroban smart contrac
 
 > **Status:** Active development · Testnet ready · Mainnet pending audit  
 > **Network:** Stellar Testnet / Mainnet  
+> **Stack:** Rust (Soroban) · Node.js · React · Stellar SDK
+
+---
+
