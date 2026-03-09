@@ -36,3 +36,8 @@ const WalletButton = ({ onConnect }) => {
   const connectWallet = async () => {
     // Integration logic for @stellar/freighter-api goes here
     const dummyAddress = "G...ABCD"; 
+    setAddress(dummyAddress);
+    onConnect(dummyAddress);
+  };
+
+  return (
