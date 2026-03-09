@@ -33,3 +33,5 @@ INSERT INTO stats (total_games, total_volume, house_profit_loss) VALUES (0, 0, 0
 CREATE TABLE games (
     game_id BIGINT PRIMARY KEY,
     player_address TEXT NOT NULL,
+    bet_amount BIGINT NOT NULL,
+    player_guess INT NOT NULL,
