@@ -41,3 +41,6 @@ const WalletButton = ({ onConnect }) => {
   };
 
   return (
+    <button 
+      onClick={connectWallet}
+      className="btn-primary flex items-center gap-2"
