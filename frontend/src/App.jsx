@@ -90,3 +90,8 @@ function App() {
       <header className="w-full max-w-6xl flex justify-between items-center mb-12">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-teal-400 rounded-lg animate-float"></div>
+          <h1 className="text-2xl font-bold tracking-tight">LumenRoll</h1>
+        </div>
+        <WalletButton onConnect={setAddress} />
+      </header>
+
