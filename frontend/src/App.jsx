@@ -95,3 +95,6 @@ function App() {
         <WalletButton onConnect={setAddress} />
       </header>
 
+      <main className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Game Board */}
+        <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[400px]">
