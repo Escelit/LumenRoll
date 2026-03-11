@@ -35,3 +35,6 @@ CREATE TABLE games (
     player_address TEXT NOT NULL,
     bet_amount BIGINT NOT NULL,
     player_guess INT NOT NULL,
+    player_commit TEXT NOT NULL,
+    house_commit TEXT,
+    house_secret TEXT, -- Stored encrypted in production
