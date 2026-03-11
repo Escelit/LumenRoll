@@ -746,3 +746,8 @@ A provably fair, on-chain dice game built on Stellar using Soroban smart contrac
 
 ---
 
+## Table of contents
+
+- [How it works](#how-it-works)
+- [Provably fair randomness](#provably-fair-randomness)
+- [Repository structure](#repository-structure)
