@@ -29,3 +29,8 @@ node_modules/
 dist/
 build/
 
+# Rust
+/target
+Cargo.lock
+
+# Node.js
