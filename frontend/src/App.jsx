@@ -98,3 +98,7 @@ function App() {
       <main className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Game Board */}
         <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[400px]">
+          <div className="text-6xl mb-8">🎲</div>
+          <p className="text-text-dim text-center mb-6">
+            Pick a number and roll the dice. <br/> 
+            5x payout on successful hits.
