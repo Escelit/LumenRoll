@@ -102,3 +102,4 @@ function App() {
           <p className="text-text-dim text-center mb-6">
             Pick a number and roll the dice. <br/> 
             5x payout on successful hits.
+          </p>
