@@ -17,3 +17,4 @@ deploy-testnet: build optimize
 default: build
 
 build:
+	stellar contract build
