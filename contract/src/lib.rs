@@ -128,3 +128,7 @@ pub enum DiceError {
     WrongPhase = 5,
     CommitMismatch = 6,
     GameExpired = 7,
+    InsufficientBet = 8,
+}
+
+#[contracttype]
