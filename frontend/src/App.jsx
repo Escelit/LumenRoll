@@ -108,3 +108,5 @@ function App() {
             {[1, 2, 3, 4, 5, 6].map(num => (
               <button 
                 key={num}
+                onClick={() => setGuess(num)}
+                className={`w-16 h-16 rounded-xl border-2 flex items-center justify-center text-xl font-bold transition-all ${
