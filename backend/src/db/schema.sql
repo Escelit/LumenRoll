@@ -38,3 +38,6 @@ CREATE TABLE games (
     player_commit TEXT NOT NULL,
     house_commit TEXT,
     house_secret TEXT, -- Stored encrypted in production
+    status TEXT NOT NULL DEFAULT 'waiting_for_house_commit',
+    roll INT,
+    won BOOLEAN,
