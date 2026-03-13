@@ -1,0 +1,28 @@
+{
+  "name": "lumen-roll-backend",
+  "version": "1.0.0",
+  "description": "API server for LumenRoll dice game",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "psql $DATABASE_URL -f src/db/schema.sql",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^11.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0"
+  }
+}
+{
+  "name": "lumen-roll-backend",
+  "version": "1.0.0",
+  "description": "API server for LumenRoll dice game",
+  "main": "src/index.js",
