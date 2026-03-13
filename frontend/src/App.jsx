@@ -103,3 +103,8 @@ function App() {
             Pick a number and roll the dice. <br/> 
             5x payout on successful hits.
           </p>
+          
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            {[1, 2, 3, 4, 5, 6].map(num => (
+              <button 
+                key={num}
