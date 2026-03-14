@@ -110,3 +110,7 @@ function App() {
                 key={num}
                 onClick={() => setGuess(num)}
                 className={`w-16 h-16 rounded-xl border-2 flex items-center justify-center text-xl font-bold transition-all ${
+                  guess === num ? 'border-accent-primary bg-accent-primary/20' : 'border-glass-border hover:border-text-dim'
+                }`}
+              >
+                {num}
