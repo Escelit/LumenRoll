@@ -34,3 +34,4 @@ build/
 Cargo.lock
 
 # Node.js
+npm-debug.log*
