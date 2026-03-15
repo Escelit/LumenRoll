@@ -114,3 +114,4 @@ function App() {
                 }`}
               >
                 {num}
+              </button>
