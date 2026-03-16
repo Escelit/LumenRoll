@@ -115,3 +115,5 @@ function App() {
               >
                 {num}
               </button>
+            ))}
+          </div>
