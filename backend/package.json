@@ -31,3 +31,6 @@
     "dev": "nodemon src/index.js",
     "migrate": "psql $DATABASE_URL -f src/db/schema.sql",
     "test": "jest"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^11.3.0",
