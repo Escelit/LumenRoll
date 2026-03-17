@@ -137,3 +137,8 @@ pub enum GameStatus {
     WaitingForHouseCommit = 1,
     WaitingForReveal = 2,
     Resolved = 3,
+    Expired = 4,
+}
+
+#[contracttype]
+#[derive(Clone, Debug, Eq, PartialEq)]
