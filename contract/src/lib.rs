@@ -132,3 +132,8 @@ pub enum DiceError {
 }
 
 #[contracttype]
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub enum GameStatus {
+    WaitingForHouseCommit = 1,
+    WaitingForReveal = 2,
+    Resolved = 3,
