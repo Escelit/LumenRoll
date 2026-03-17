@@ -50,3 +50,7 @@ const WalletButton = ({ onConnect }) => {
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           {address.slice(0, 4)}...{address.slice(-4)}
         </>
+      ) : (
+        "Connect Wallet"
+      )}
+    </button>
