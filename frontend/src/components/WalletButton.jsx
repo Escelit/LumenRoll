@@ -57,3 +57,4 @@ const WalletButton = ({ onConnect }) => {
   );
 };
 
+export default WalletButton;
