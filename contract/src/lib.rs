@@ -142,3 +142,7 @@ pub enum GameStatus {
 
 #[contracttype]
 #[derive(Clone, Debug, Eq, PartialEq)]
+pub struct Game {
+    pub player: Address,
+    pub bet_amount: i128,
+    pub player_guess: u32,
