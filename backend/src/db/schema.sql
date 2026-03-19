@@ -41,3 +41,4 @@ CREATE TABLE games (
     status TEXT NOT NULL DEFAULT 'waiting_for_house_commit',
     roll INT,
     won BOOLEAN,
+    payout BIGINT,
