@@ -40,3 +40,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # Database
+*.sqlite
+*.db
+
+# OS
