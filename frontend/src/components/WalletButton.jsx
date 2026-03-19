@@ -54,3 +54,6 @@ const WalletButton = ({ onConnect }) => {
         "Connect Wallet"
       )}
     </button>
+  );
+};
+
