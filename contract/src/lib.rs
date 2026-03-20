@@ -146,3 +146,8 @@ pub struct Game {
     pub player: Address,
     pub bet_amount: i128,
     pub player_guess: u32,
+    pub player_commit: BytesN<32>,
+    pub house_commit: BytesN<32>,
+    pub status: GameStatus,
+    pub ledger_committed: u32,
+}
