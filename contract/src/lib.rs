@@ -151,3 +151,7 @@ pub struct Game {
     pub status: GameStatus,
     pub ledger_committed: u32,
 }
+
+#[contracttype]
+pub enum DataKey {
+    House = 1,
