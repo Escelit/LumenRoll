@@ -42,3 +42,5 @@ CREATE TABLE games (
     roll INT,
     won BOOLEAN,
     payout BIGINT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    resolved_at TIMESTAMP WITH TIME ZONE
