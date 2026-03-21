@@ -30,3 +30,4 @@ deploy-testnet: build optimize
 		--wasm target/wasm32-unknown-unknown/release/lumen_roll_contract.optimized.wasm \
 		--source-account default \
 		--network testnet
+// touch 106
