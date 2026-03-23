@@ -756,3 +756,7 @@ A provably fair, on-chain dice game built on Stellar using Soroban smart contrac
 - [Smart contract](#smart-contract)
   - [Contract API](#contract-api)
   - [Data types](#data-types)
+  - [Error codes](#error-codes)
+  - [Constants](#constants)
+  - [Building and deploying](#building-and-deploying)
+- [Backend API](#backend-api)
