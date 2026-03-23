@@ -155,3 +155,8 @@ pub struct Game {
 #[contracttype]
 pub enum DataKey {
     House = 1,
+    Token = 2,
+    Game(u64),
+    GameCount = 3,
+}
+
