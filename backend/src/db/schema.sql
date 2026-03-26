@@ -48,3 +48,7 @@ CREATE TABLE games (
 
 -- Indexing for history queries
 CREATE INDEX idx_games_player ON games(player_address);
+CREATE INDEX idx_games_status ON games(status);
+
+-- Global stats
+CREATE TABLE stats (
