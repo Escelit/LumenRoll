@@ -160,3 +160,5 @@ pub enum DataKey {
     GameCount = 3,
 }
 
+#[contract]
+pub struct LumenRoll;
