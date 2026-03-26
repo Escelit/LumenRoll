@@ -44,3 +44,7 @@ CREATE TABLE games (
     payout BIGINT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     resolved_at TIMESTAMP WITH TIME ZONE
+);
+
+-- Indexing for history queries
+CREATE INDEX idx_games_player ON games(player_address);
