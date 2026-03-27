@@ -162,3 +162,8 @@ pub enum DataKey {
 
 #[contract]
 pub struct LumenRoll;
+
+#[contractimpl]
+impl LumenRoll {
+    /// Initialize the contract with the house address and the token to be used for bets.
+    pub fn initialize(env: Env, house: Address, token: Address) -> Result<(), DiceError> {
