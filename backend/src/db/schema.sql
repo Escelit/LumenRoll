@@ -52,3 +52,5 @@ CREATE INDEX idx_games_status ON games(status);
 
 -- Global stats
 CREATE TABLE stats (
+    id SERIAL PRIMARY KEY,
+    total_games BIGINT DEFAULT 0,
