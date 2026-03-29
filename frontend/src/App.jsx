@@ -121,3 +121,4 @@ function App() {
           <button className="btn-primary w-full py-4 text-lg">
             Place Bet
           </button>
+        </div>
