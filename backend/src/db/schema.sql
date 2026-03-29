@@ -54,3 +54,6 @@ CREATE INDEX idx_games_status ON games(status);
 CREATE TABLE stats (
     id SERIAL PRIMARY KEY,
     total_games BIGINT DEFAULT 0,
+    total_volume BIGINT DEFAULT 0,
+    house_profit_loss BIGINT DEFAULT 0,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
