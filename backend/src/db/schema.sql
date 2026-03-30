@@ -57,3 +57,6 @@ CREATE TABLE stats (
     total_volume BIGINT DEFAULT 0,
     house_profit_loss BIGINT DEFAULT 0,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO stats (total_games, total_volume, house_profit_loss) VALUES (0, 0, 0);
