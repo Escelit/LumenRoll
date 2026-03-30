@@ -125,3 +125,4 @@ function App() {
 
         {/* Stats & History */}
         <div className="flex flex-col gap-6">
+          <div className="glass-card p-6">
