@@ -122,3 +122,6 @@ function App() {
             Place Bet
           </button>
         </div>
+
+        {/* Stats & History */}
+        <div className="flex flex-col gap-6">
