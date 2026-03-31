@@ -126,3 +126,6 @@ function App() {
         {/* Stats & History */}
         <div className="flex flex-col gap-6">
           <div className="glass-card p-6">
+            <h3 className="text-lg font-semibold mb-4">Your Stats</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-white/5 rounded-xl">
