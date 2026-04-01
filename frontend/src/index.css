@@ -126,3 +126,4 @@ body {
 .input-field {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--glass-border);
+  border-radius: 12px;
