@@ -61,3 +61,4 @@ CREATE TABLE stats (
 
 INSERT INTO stats (total_games, total_volume, house_profit_loss) VALUES (0, 0, 0);
 // touch 169
+// touch 179
