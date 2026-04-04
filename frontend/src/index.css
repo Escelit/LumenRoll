@@ -137,3 +137,6 @@ body {
   outline: none;
   border-color: var(--accent-primary);
 }
+
+/* Animations */
+@keyframes float {
