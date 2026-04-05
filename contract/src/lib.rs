@@ -167,3 +167,4 @@ pub struct LumenRoll;
 impl LumenRoll {
     /// Initialize the contract with the house address and the token to be used for bets.
     pub fn initialize(env: Env, house: Address, token: Address) -> Result<(), DiceError> {
+        if env.storage().instance().has(&DataKey::House) {
