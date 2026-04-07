@@ -132,3 +132,7 @@ function App() {
                 <p className="text-sm text-text-dim">Total Wagered</p>
                 <p className="text-xl font-bold">0.00 XLM</p>
               </div>
+              <div className="p-4 bg-white/5 rounded-xl">
+                <p className="text-sm text-text-dim">Net Profit</p>
+                <p className="text-xl font-bold text-teal-400">+0.00</p>
+              </div>
