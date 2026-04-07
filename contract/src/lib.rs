@@ -169,3 +169,6 @@ impl LumenRoll {
     pub fn initialize(env: Env, house: Address, token: Address) -> Result<(), DiceError> {
         if env.storage().instance().has(&DataKey::House) {
             return Err(DiceError::AlreadyInitialized);
+        }
+        env.storage().instance().set(&DataKey::House, &house);
+        env.storage().instance().set(&DataKey::Token, &token);
