@@ -172,3 +172,5 @@ impl LumenRoll {
         }
         env.storage().instance().set(&DataKey::House, &house);
         env.storage().instance().set(&DataKey::Token, &token);
+        env.storage().instance().set(&DataKey::GameCount, &0u64);
+        Ok(())
