@@ -174,3 +174,7 @@ impl LumenRoll {
         env.storage().instance().set(&DataKey::Token, &token);
         env.storage().instance().set(&DataKey::GameCount, &0u64);
         Ok(())
+    }
+
+    /// Place a bet by committing a hashed secret and escrowing the bet amount.
+    pub fn place_bet(
