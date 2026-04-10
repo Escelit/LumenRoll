@@ -136,3 +136,4 @@ function App() {
                 <p className="text-sm text-text-dim">Net Profit</p>
                 <p className="text-xl font-bold text-teal-400">+0.00</p>
               </div>
+            </div>
