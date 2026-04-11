@@ -178,3 +178,4 @@ impl LumenRoll {
 
     /// Place a bet by committing a hashed secret and escrowing the bet amount.
     pub fn place_bet(
+        env: Env,
