@@ -781,3 +781,8 @@ A provably fair, on-chain dice game built on Stellar using Soroban smart contrac
 
 LumenRoll is a 1-vs-house dice game. A player picks a number between 1 and 6 and wagers an amount of XLM. If the dice lands on their number, they win **5× their bet** (reflecting the true 1-in-6 odds with a small house edge baked into the payout multiplier). If not, the house keeps the bet.
 
+The game runs across four on-chain phases:
+
+| Phase                 | Action                                                                                              |
+| --------------------- | --------------------------------------------------------------------------------------------------- |
+| 1 — Player commits    | `hash(player_secret + bet_amount + guess)` + locks escrow                                           |
