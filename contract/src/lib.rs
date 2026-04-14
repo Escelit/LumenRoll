@@ -183,3 +183,8 @@ impl LumenRoll {
         bet_amount: i128,
         player_guess: u32,
         player_commit: BytesN<32>,
+    ) -> Result<u64, DiceError> {
+        player.require_auth();
+
+        if player_guess < 1 || player_guess > 6 {
+            return Err(DiceError::InvalidGuess);
