@@ -786,3 +786,5 @@ The game runs across four on-chain phases:
 | Phase                 | Action                                                                                              |
 | --------------------- | --------------------------------------------------------------------------------------------------- |
 | 1 — Player commits    | `hash(player_secret + bet_amount + guess)` + locks escrow                                           |
+| 2 — House commits     | `hash(house_secret)` stored on contract                                                             |
+| 3 — Both reveal       | Secrets submitted, contract verifies hashes                                                         |
