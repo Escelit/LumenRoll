@@ -188,3 +188,6 @@ impl LumenRoll {
 
         if player_guess < 1 || player_guess > 6 {
             return Err(DiceError::InvalidGuess);
+        }
+
+        if bet_amount < 1_000_000 {
