@@ -137,3 +137,6 @@ function App() {
                 <p className="text-xl font-bold text-teal-400">+0.00</p>
               </div>
             </div>
+          </div>
+
+          <div className="glass-card p-6 flex-grow">
