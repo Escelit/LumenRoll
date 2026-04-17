@@ -191,3 +191,7 @@ impl LumenRoll {
         }
 
         if bet_amount < 1_000_000 {
+            // 0.1 XLM minimum
+            return Err(DiceError::InsufficientBet);
+        }
+
