@@ -788,3 +788,7 @@ The game runs across four on-chain phases:
 | 1 — Player commits    | `hash(player_secret + bet_amount + guess)` + locks escrow                                           |
 | 2 — House commits     | `hash(house_secret)` stored on contract                                                             |
 | 3 — Both reveal       | Secrets submitted, contract verifies hashes                                                         |
+| 4 — Contract resolves | `seed = XOR(player_secret, house_secret)` → `dice = (seed % 6) + 1` → payout released automatically |
+
+All state transitions happen via Soroban contract invocations. The frontend and backend never touch escrowed funds directly — only the contract logic does.
+
