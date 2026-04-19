@@ -195,3 +195,7 @@ impl LumenRoll {
             return Err(DiceError::InsufficientBet);
         }
 
+        // Transfer funds to contract escrow (Implementation left for contributors)
+        // let token_client = token::Client::new(&env, &get_token(&env));
+        // token_client.transfer(&player, &env.current_contract_address(), &bet_amount);
+
