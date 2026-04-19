@@ -140,3 +140,6 @@ function App() {
           </div>
 
           <div className="glass-card p-6 flex-grow">
+            <h3 className="text-lg font-semibold mb-4">Live Activity</h3>
+            <div className="space-y-4">
+              <p className="text-text-dim text-sm italic">Waiting for games...</p>
