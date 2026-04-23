@@ -202,3 +202,5 @@ impl LumenRoll {
         let mut count: u64 = env.storage().instance().get(&DataKey::GameCount).unwrap_or(0);
         count += 1;
 
+        let game = Game {
+            player,
