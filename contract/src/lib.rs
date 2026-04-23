@@ -204,3 +204,6 @@ impl LumenRoll {
 
         let game = Game {
             player,
+            bet_amount,
+            player_guess,
+            player_commit,
