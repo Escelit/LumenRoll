@@ -148,3 +148,5 @@ function App() {
         </div>
       </main>
 
+      <footer className="mt-20 text-text-dim text-sm">
+        Built on Stellar • Powered by Soroban
