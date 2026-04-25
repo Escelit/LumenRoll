@@ -792,3 +792,6 @@ The game runs across four on-chain phases:
 
 All state transitions happen via Soroban contract invocations. The frontend and backend never touch escrowed funds directly — only the contract logic does.
 
+---
+
+## Provably fair randomness
