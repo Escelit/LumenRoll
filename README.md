@@ -795,3 +795,8 @@ All state transitions happen via Soroban contract invocations. The frontend and 
 ---
 
 ## Provably fair randomness
+
+The randomness mechanism is a **dual commit-reveal scheme**:
+
+1. Before a bet is placed, the player generates a cryptographically random secret (`player_secret`) client-side and computes `player_commit = sha256(player_secret)`.
+2. The player submits their guess, bet amount, and `player_commit` to the contract. The XLM is locked in escrow on-chain.
