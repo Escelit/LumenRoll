@@ -209,3 +209,6 @@ impl LumenRoll {
             player_commit,
             house_commit: BytesN::from_array(&env, &[0u8; 32]), // Placeholder
             status: GameStatus::WaitingForHouseCommit,
+            ledger_committed: env.ledger().sequence(),
+        };
+
