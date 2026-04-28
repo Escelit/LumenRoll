@@ -802,3 +802,8 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 2. The player submits their guess, bet amount, and `player_commit` to the contract. The XLM is locked in escrow on-chain.
 3. The house backend responds by generating its own `house_secret` and submitting `house_commit = sha256(house_secret)` to the contract.
 4. Both parties then submit their raw secrets. The contract verifies each secret against its stored hash.
+5. The final seed is derived as `seed = player_secret XOR house_secret`, and the dice result is `(seed % 6) + 1`.
+
+**Why this is fair:**
+
+- The player commits before the house commits, so the house cannot pick a secret that favours itself given knowledge of the player's secret.
