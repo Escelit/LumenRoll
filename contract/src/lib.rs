@@ -212,3 +212,5 @@ impl LumenRoll {
             ledger_committed: env.ledger().sequence(),
         };
 
+        env.storage().instance().set(&DataKey::Game(count), &game);
+        env.storage().instance().set(&DataKey::GameCount, &count);
