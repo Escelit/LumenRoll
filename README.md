@@ -800,3 +800,5 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 
 1. Before a bet is placed, the player generates a cryptographically random secret (`player_secret`) client-side and computes `player_commit = sha256(player_secret)`.
 2. The player submits their guess, bet amount, and `player_commit` to the contract. The XLM is locked in escrow on-chain.
+3. The house backend responds by generating its own `house_secret` and submitting `house_commit = sha256(house_secret)` to the contract.
+4. Both parties then submit their raw secrets. The contract verifies each secret against its stored hash.
