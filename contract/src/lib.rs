@@ -214,3 +214,5 @@ impl LumenRoll {
 
         env.storage().instance().set(&DataKey::Game(count), &game);
         env.storage().instance().set(&DataKey::GameCount, &count);
+
+        Ok(count)
