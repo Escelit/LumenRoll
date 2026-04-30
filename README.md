@@ -807,3 +807,6 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 **Why this is fair:**
 
 - The player commits before the house commits, so the house cannot pick a secret that favours itself given knowledge of the player's secret.
+- The house commits before either party reveals, so the player cannot choose a secret that exploits knowledge of the house's secret.
+- Once both parties have committed, the outcome is deterministic and neither can change it.
+- Every step is verifiable on-chain. Anyone can re-derive the result from the two revealed secrets.
