@@ -216,3 +216,8 @@ impl LumenRoll {
         env.storage().instance().set(&DataKey::GameCount, &count);
 
         Ok(count)
+    }
+
+    pub fn get_game(env: Env, game_id: u64) -> Option<Game> {
+        env.storage().instance().get(&DataKey::Game(game_id))
+    }
