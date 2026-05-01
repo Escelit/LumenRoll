@@ -221,3 +221,5 @@ impl LumenRoll {
     pub fn get_game(env: Env, game_id: u64) -> Option<Game> {
         env.storage().instance().get(&DataKey::Game(game_id))
     }
+
+    pub fn get_house(env: Env) -> Address {
