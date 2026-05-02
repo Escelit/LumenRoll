@@ -810,3 +810,7 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 - The house commits before either party reveals, so the player cannot choose a secret that exploits knowledge of the house's secret.
 - Once both parties have committed, the outcome is deterministic and neither can change it.
 - Every step is verifiable on-chain. Anyone can re-derive the result from the two revealed secrets.
+
+**Griefing protection:** If either party fails to reveal within `EXPIRY_LEDGERS` (60 ledgers, ~5 minutes), the non-revealing party is penalised and the other is refunded in full. This prevents a losing party from simply not revealing.
+
+---
