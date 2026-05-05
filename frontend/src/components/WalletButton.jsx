@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Wallet, LogOut, CheckCircle2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Wallet, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const WalletButton = ({ onConnect }) => {
   const [address, setAddress] = useState(null);
 
   const connectWallet = async () => {
-    // Simulated connection for demo
     const dummyAddress = "GDFX...3Y7Z"; 
     setAddress(dummyAddress);
     onConnect(dummyAddress);
@@ -17,20 +16,20 @@ const WalletButton = ({ onConnect }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={connectWallet}
-      className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all flex items-center gap-3 ${
+      className={`px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all flex items-center gap-3 ${
         address 
-          ? 'bg-success/10 text-success border border-success/20' 
-          : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+          ? 'bg-secondary text-black shadow-lg shadow-secondary/20' 
+          : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
       }`}
     >
       {address ? (
         <>
-          <CheckCircle2 className="w-4 h-4" />
-          <span className="tracking-tight">{address}</span>
+          <CheckCircle2 className="w-5 h-5" />
+          <span className="font-mono">{address}</span>
         </>
       ) : (
         <>
-          <Wallet className="w-4 h-4" />
+          <Wallet className="w-5 h-5" />
           Connect Wallet
         </>
       )}
