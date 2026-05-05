@@ -814,3 +814,5 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 **Griefing protection:** If either party fails to reveal within `EXPIRY_LEDGERS` (60 ledgers, ~5 minutes), the non-revealing party is penalised and the other is refunded in full. This prevents a losing party from simply not revealing.
 
 ---
+
+## Repository structure
