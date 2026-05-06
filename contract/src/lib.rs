@@ -85,7 +85,11 @@ impl LumenRoll {
         // let token_client = token::Client::new(&env, &get_token(&env));
         // token_client.transfer(&player, &env.current_contract_address(), &bet_amount);
 
-        let mut count: u64 = env.storage().instance().get(&DataKey::GameCount).unwrap_or(0);
+        let mut count: u64 = env
+            .storage()
+            .instance()
+            .get(&DataKey::GameCount)
+            .unwrap_or(0);
         count += 1;
 
         let game = Game {
