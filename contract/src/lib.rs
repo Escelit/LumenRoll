@@ -1,6 +1,6 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contracterror, contractimpl, contracttype, symbol_short, Address, BytesN, Env, Symbol,
+    contract, contracterror, contractimpl, contracttype, Address, BytesN, Env,
 };
 
 #[contracterror]
@@ -40,10 +40,10 @@ pub struct Game {
 
 #[contracttype]
 pub enum DataKey {
-    House = 1,
-    Token = 2,
+    House,
+    Token,
     Game(u64),
-    GameCount = 3,
+    GameCount,
 }
 
 #[contract]
