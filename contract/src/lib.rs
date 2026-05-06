@@ -18,10 +18,10 @@ pub enum DiceError {
 #[contracttype]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum GameStatus {
-    WaitingForHouseCommit = 1,
-    WaitingForReveal = 2,
-    Resolved = 3,
-    Expired = 4,
+    WaitingForHouseCommit,
+    WaitingForReveal,
+    Resolved,
+    Expired,
 }
 
 #[contracttype]
@@ -70,7 +70,7 @@ impl LumenRoll {
     ) -> Result<u64, DiceError> {
         player.require_auth();
 
-        if player_guess < 1 || player_guess > 6 {
+        if !(1..=6).contains(&player_guess) {
             return Err(DiceError::InvalidGuess);
         }
 
