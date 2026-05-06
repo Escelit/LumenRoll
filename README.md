@@ -1,6 +1,6 @@
 # LumenRoll
 
-A provably fair, on-chain dice game built on Stellar using Soroban smart contracts. Players bet XLM (or any Stellar custom asset) on a dice roll outcome. Fairness is guaranteed through a commit-reveal randomness scheme — neither the player nor the house can manipulate the result after a bet is placed.
+A provably fair, on-chain dice game built on Stellar using Soroban smart contracts. Players bet XLM (or any Stellar custom asset) on a dice roll outcome. Fairness is guaranteed through a commit-reveal randomness scheme, neither the player nor the house can manipulate the result after a bet is placed.
 
 > **Status:** Active development · Testnet ready · Mainnet pending audit  
 > **Network:** Stellar Testnet / Mainnet  
