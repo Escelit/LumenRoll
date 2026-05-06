@@ -2,7 +2,7 @@
 
 A provably fair, on-chain dice game built on Stellar using Soroban smart contracts. Players bet XLM (or any Stellar custom asset) on a dice roll outcome. Fairness is guaranteed through a commit-reveal randomness scheme, neither the player nor the house can manipulate the result after a bet is placed.
 
-> **Status:** Active development · Testnet ready · Mainnet pending audit  
+> **Status:** Active development · Contract builds · Backend and frontend partially implemented  
 > **Network:** Stellar Testnet / Mainnet  
 > **Stack:** Rust (Soroban) · Node.js · React · Stellar SDK
 
@@ -83,47 +83,39 @@ The randomness mechanism is a **dual commit-reveal scheme**:
 LumenRoll/
 ├── contract/                   # Soroban smart contract (Rust)
 │   ├── src/
-│   │   └── lib.rs              # Contract logic
+│   │   └── lib.rs              # Contract logic (initialize, place_bet, get_game, get_house)
 │   ├── Cargo.toml
+│   ├── Cargo.lock
 │   └── Makefile                # build / test / deploy helpers
 │
 ├── backend/                    # Node.js API server
 │   ├── src/
 │   │   ├── index.js            # Express app entrypoint
 │   │   ├── routes/
-│   │   │   ├── bet.js          # POST /bet, GET /bet/:id
-│   │   │   └── house.js        # House commit / reveal automation
+│   │   │   ├── bet.js          # POST /bet, POST /bet/:id/reveal, GET /bet/:id
+│   │   │   └── house.js        # House commit / reveal / claim-expired endpoints
 │   │   ├── services/
 │   │   │   ├── stellar.js      # Stellar SDK helpers
 │   │   │   ├── contract.js     # Soroban contract invocation helpers
-│   │   │   └── randomness.js   # House secret generation + storage
+│   │   │   └── randomness.js   # House secret generation + in-memory storage
 │   │   └── db/
-│   │       └── schema.sql      # PostgreSQL schema
+│   │       └── schema.sql      # PostgreSQL schema (not yet wired up)
 │   ├── .env.example
 │   └── package.json
 │
 ├── frontend/                   # React application
 │   ├── src/
-│   │   ├── App.jsx
-│   │   ├── components/
-│   │   │   ├── DiceBoard.jsx   # Main game UI
-│   │   │   ├── BetForm.jsx     # Guess + amount input
-│   │   │   ├── DiceRoll.jsx    # Animated dice result
-│   │   │   ├── History.jsx     # Past bets table
-│   │   │   └── WalletButton.jsx
-│   │   ├── hooks/
-│   │   │   ├── useFreighter.js # Freighter wallet hook
-│   │   │   └── useGame.js      # Game state machine hook
-│   │   └── lib/
-│   │       ├── stellar.js      # SDK client config
-│   │       └── commit.js       # Client-side commit generation
+│   │   ├── App.jsx             # Main game UI (all game logic lives here)
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   └── components/
+│   │       └── WalletButton.jsx
 │   ├── .env.example
 │   └── package.json
 │
 ├── scripts/
-│   ├── deploy.sh               # End-to-end testnet deploy
-│   ├── fund-house.sh           # Fund house bankroll
-│   └── verify-game.sh          # Verify a game result by game_id
+│   ├── init_history.sh
+│   └── init_organic_history.sh
 │
 └── README.md
 ```
@@ -178,6 +170,8 @@ Open http://localhost:5173, connect Freighter (set to Testnet), and place a bet.
 ## Smart contract
 
 ### Contract API
+
+> ⚠️ **Implementation status:** Only `initialize`, `place_bet`, `get_game`, and `get_house` are currently implemented in the contract. The functions below describe the full intended API — `house_commit`, `reveal`, and `claim_expired` are documented here as design specs and need to be added to `contract/src/lib.rs`.
 
 All functions are invokable via Stellar CLI or the Stellar SDK's `SorobanClient`.
 
@@ -346,13 +340,15 @@ The Makefile wraps `stellar contract build`, `stellar contract optimize`, and `s
 
 ## Backend API
 
-The backend is a Node.js / Express server that:
+The backend is a Node.js / Express server that will:
 
-- Watches for new `place_bet` contract events via the Stellar event streaming API
-- Automatically submits `house_commit` for each new game
-- Receives the player's revealed secret, then calls `reveal` on the contract
-- Persists game history to PostgreSQL
-- Exposes a REST API for the frontend
+- Watch for new `place_bet` contract events via the Stellar event streaming API
+- Automatically submit `house_commit` for each new game
+- Receive the player's revealed secret, then call `reveal` on the contract
+- Persist game history to PostgreSQL
+- Expose a REST API for the frontend
+
+> ⚠️ **Implementation status:** The backend structure and routes exist, but most service methods return mock data. `ContractService` uses hardcoded returns and `Math.random()` for rolls. `StellarService.submitHouseCommit` references Stellar SDK APIs that don't exist in the current SDK version. Database integration is not wired up — stats and history endpoints return empty stubs.
 
 ### Environment variables
 
@@ -384,7 +380,9 @@ SECRET_STORE_ENCRYPTION_KEY=...                 # AES-256 key for encrypting hou
 
 #### `POST /api/bet`
 
-Opens a new game. The frontend calls this after constructing the player's commitment client-side.
+Opens a new game. The frontend will call this after constructing the player's commitment client-side.
+
+> ⚠️ **Current behavior:** The endpoint exists but expects a `signed_xdr` field that the frontend doesn't yet generate. The backend attempts to submit it via `StellarService.submitTransaction`, which is a stub.
 
 **Request body:**
 
@@ -475,7 +473,8 @@ cd backend
 npm install
 
 # Run database migrations
-npm run migrate
+# ⚠️ DB integration not yet wired up — schema.sql exists but is unused
+# npm run migrate
 
 # Start in development mode (with auto-reload)
 npm run dev
@@ -494,12 +493,14 @@ A React SPA that handles wallet connection, bet construction, animated dice resu
 
 ### Wallet integration
 
-The frontend integrates with Freighter via `@stellar/freighter-api`. On mainnet you can also support WalletConnect with `@stellar/wallet-sdk`.
+The frontend integrates with Freighter via `@stellar/freighter-api`.
 
-The commit is generated entirely client-side before any network call:
+> ⚠️ **Implementation status:** Wallet connection is wired up via `WalletButton.jsx`. Client-side commit generation, transaction construction, and the reveal flow are not yet implemented — the current `handleRoll` in `App.jsx` uses `Math.random()` as a placeholder. The flow below describes the intended implementation.
+
+The commit should be generated entirely client-side before any network call:
 
 ```js
-// lib/commit.js
+// To be implemented in frontend/src/lib/commit.js
 import { sha256 } from "@noble/hashes/sha256";
 import { randomBytes } from "@noble/hashes/utils";
 
@@ -513,7 +514,7 @@ export function generateCommit() {
 }
 ```
 
-The raw secret is stored in `sessionStorage` only until the reveal step is complete, then cleared.
+The raw secret should be stored in `sessionStorage` only until the reveal step is complete, then cleared.
 
 ### Running locally
 
@@ -644,10 +645,11 @@ Recommended approach:
 
 ```bash
 cd contract
+cargo build --release  # Builds cleanly as of soroban-sdk 20.0.2
 cargo test
 ```
 
-Tests cover: initialization, valid and invalid bets, commit-reveal happy path, mismatched reveal rejection, expiry handling, payout calculation.
+> ⚠️ Unit tests are not yet written. The test suite needs to cover: initialization, valid and invalid bets, commit-reveal happy path, mismatched reveal rejection, expiry handling, and payout calculation.
 
 ### Backend tests
 
@@ -656,7 +658,7 @@ cd backend
 npm test
 ```
 
-Uses Jest + a local PostgreSQL test database. Integration tests mock the Stellar SDK and verify the full API flow including event handling.
+> ⚠️ Backend tests are not yet written.
 
 ### Frontend tests
 
@@ -665,15 +667,11 @@ cd frontend
 npm test
 ```
 
-Uses Vitest + React Testing Library. Tests cover the commit generation utility, wallet connection hook, and game state machine.
+> ⚠️ Frontend tests are not yet written.
 
 ### End-to-end testnet test
 
-```bash
-./scripts/verify-game.sh <GAME_ID>
-```
-
-This script fetches both revealed secrets from the contract's event log, recomputes the XOR seed and dice result locally, and confirms it matches the on-chain resolution. Use it to spot-check game fairness.
+> ⚠️ The `verify-game.sh` script does not exist yet. Once the contract and backend are fully implemented, this script should fetch both revealed secrets from the contract's event log, recompute the XOR seed and dice result locally, and confirm it matches the on-chain resolution.
 
 ---
 
